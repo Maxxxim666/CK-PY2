@@ -22,7 +22,7 @@ class Person:
             raise ValueError("Возраст человека должен быть больше 0")
         self.person_full_age = person_full_age
 
-    def change_name(self, new_person_name: str):
+    def change_name(self, new_person_name: str) -> None:
         """
         Функция, которая меняет имя человека
         :param new_person_name: Новое имя человека
@@ -39,7 +39,7 @@ class Person:
             raise ValueError("Строка пустая")
         ...
 
-    def change_full_age(self, new_full_age: int):
+    def change_full_age(self, new_full_age: int) -> None:
         """
         Функция, которая меняет полный возраст человека
         :param new_full_age: Новый полный возраст человека
@@ -74,7 +74,7 @@ class Window:
             raise TypeError("Состояние окна должно быть типа bool")
         self.is_clean = is_clean
 
-    def open_window(self):
+    def open_window(self) -> None:
         """
         Функция, которая открывает окно
         :raise ValueError: Если окно уже открыто, то вызываем ошибку
@@ -87,11 +87,11 @@ class Window:
             raise ValueError('Окно уже открыто!')
         ...
 
-    def clean_window(self):
+    def clean_window(self) -> None:
         """
         Функция, которая моет окно
         Пример:
-        >>> window_1 = Window(True, True)
+        >>> window_1 = Window(True, False)
         >>> window_1.clean_window()
         """
         ...
@@ -118,7 +118,7 @@ class Car:
             raise ValueError('Потребление топлива должно быть больше 0')
         self.oil_consumption = oil_consumption
 
-    def add_oil(self, extra_oil: (int, float)):
+    def add_oil(self, extra_oil: (int, float)) -> None:
         """
         Функция, которая добавляет топлива в бак
         :param extra_oil: дополнительное топливо
