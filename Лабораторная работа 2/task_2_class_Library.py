@@ -14,6 +14,12 @@ BOOKS_DATABASE = [
 
 class Book:
     def __init__(self, id_: int, name: str, pages: int):
+        """
+        Создание и подготовка к работе объекта "Книга"
+        :param id_: ID книги
+        :param name: Название книги
+        :param pages: Количество страниц в книге
+        """
         if not isinstance(id_, int):
             raise TypeError('id_ должно быть типа int')
         if id_ < 0:
@@ -28,21 +34,39 @@ class Book:
             raise ValueError('Количество страниц должно быть больше 0')
         self.pages = pages
 
+    def __str__(self) -> str:
+        return f'Книга "{self.name}"'
+
+    def __repr__(self) -> str:
+        return f'Book(id_={self.id_!r}, name={self.name!r}, pages={self.pages!r})'
+
 
 class Library:
     def __init__(self, books: list[Book] = None):
+        """
+        Создание и подготовка к работе объекта "Книга"
+        :param books: Список книг
+        """
         if books is None:
             books = []
         self.books = books
 
     def get_next_book_id(self, id_: int) -> int:
-        if len(self.books) == 0:
+        """
+        Функция, которая возвращающает идентификатор для добавления новой книги в библиотеку
+        :return: идентификатор для добавления новой книги в библиотеку
+        """
+        if not self.books:
             return 1
         else:
             return self.books[-1].id_ + 1
 
     @staticmethod
     def get_index_by_book_id(id_: int):
+        """
+        Функция, возвращающющая индекс книги в списке, который хранится в атрибуте экземпляра класса
+        :return: индекс книги в списке, который хранится в атрибуте экземпляра класса
+        """
         for identifier, books in enumerate(BOOKS_DATABASE):
             if 'id' in books and books['id'] == id_:
                 return identifier
